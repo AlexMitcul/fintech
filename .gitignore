@@ -53,3 +53,8 @@ atlassian-ide-plugin.xml
 cached-antora-playbook.yml
 
 node_modules
+
+# Ignore Gradle build output directory
+build/
+.gradle/
+.idea/

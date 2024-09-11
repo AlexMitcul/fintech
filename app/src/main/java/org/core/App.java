@@ -17,6 +17,28 @@ public class App {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) {
+//        fileContentToXml();
+        dabblingWithStreams();
+    }
+
+    private static void dabblingWithStreams() {
+        List<Integer> intList = new ArrayList<>(List.of(1, 2, 3, 4, 5));
+        CustomLinkedList<Integer> customLinkedList = intList.stream().reduce(
+                new CustomLinkedList<>(),
+                (list, element) -> {
+                    list.add(element);
+                    return list;
+                },
+                (list1, list2) -> list1
+        );
+
+        System.out.println("CustomLinkedList content:");
+        for (int i = 0; i < customLinkedList.size(); i++) {
+            System.out.println(customLinkedList.get(i));
+        }
+    }
+
+    private static void fileContentToXml() {
         logger.info("App is running");
 
         ObjectMapper mapper = new ObjectMapper();
